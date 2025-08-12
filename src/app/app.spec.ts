@@ -19,7 +19,7 @@ describe('App', () => {
     const { fixture } = await sut();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('h1')?.textContent).toContain(
-      'umbandario-angular',
+      'planning-poker-app',
     );
   });
 });
