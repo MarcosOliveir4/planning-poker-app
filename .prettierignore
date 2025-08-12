@@ -1,0 +1,5 @@
+# Ignore artifacts:
+!.jest
+build
+coverage
+node_modules

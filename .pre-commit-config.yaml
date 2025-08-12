@@ -1,0 +1,44 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-added-large-files
+
+  - repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
+    rev: v9.16.0
+    hooks:
+      - id: commitlint
+        stages: [commit-msg]
+        additional_dependencies: ["@commitlint/config-conventional"]
+  - repo: local
+    hooks:
+      - id: angular-lint
+        name: Angular Linter
+        entry: npm run lint -- --fix
+        language: node
+        pass_filenames: false
+        stages: [pre-commit]
+        types_or: [css, javascript, json, scss, ts, html]
+
+      - id: angular-test
+        name: Angular Unit Tests
+        entry: npm run test:ci
+        language: node
+        pass_filenames: false
+        stages: [pre-commit]
+        types_or: [css, javascript, json, scss, ts, html]
+
+      - id: angular-prettier
+        name: Angular Prettier
+        entry: npm run prettier
+        language: node
+        pass_filenames: false
+        stages: [pre-commit]
+        types_or: [css, javascript, json, scss, ts, html]
+
+      - id: angular-build
+        name: Angular Build
+        entry: npm run build
+        language: node
+        pass_filenames: false
+        stages: [pre-push]
