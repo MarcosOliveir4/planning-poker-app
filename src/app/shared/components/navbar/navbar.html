@@ -1,0 +1,22 @@
+<div class="navbar bg-base-100 shadow-sm" data-testid="navbar">
+  <div class="flex-1">
+    <a class="btn btn-ghost text-xl">Planning poker app</a>
+  </div>
+
+  <div class="flex-none">
+    <button class="btn btn-ghost">Nova sessão</button>
+    <button class="btn btn-ghost">Entrar na sessão</button>
+
+    <button
+      class="btn btn-ghost"
+      (click)="toggleTheme()"
+      data-testid="toggle-theme-button"
+    >
+      @if (currentTheme() === "light") {
+        <ng-icon name="matModeNight" data-testid="mat-mode-night" /> Dark
+      } @else {
+        <ng-icon name="matLightMode" data-testid="mat-light-mode" /> Light
+      }
+    </button>
+  </div>
+</div>
