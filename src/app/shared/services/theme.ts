@@ -7,7 +7,7 @@ import {
   signal,
 } from '@angular/core';
 
-export type Theme = 'light' | 'business';
+export type Theme = 'light' | 'sunset';
 
 @Injectable({
   providedIn: 'root',
@@ -48,7 +48,7 @@ export class ThemeService {
 
   toggleTheme(): void {
     this.currentTheme.update((current) =>
-      current === 'light' ? 'business' : 'light',
+      current === 'light' ? 'sunset' : 'light',
     );
   }
 }
