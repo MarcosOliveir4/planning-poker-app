@@ -1,0 +1,42 @@
+<div class="card w-96 bg-base-200 shadow-sm">
+  <div class="card-body">
+    <h2 class="card-title">Criar nova sessão</h2>
+    <form
+      autocomplete="off"
+      [formGroup]="newSessionForm()"
+      class="flex flex-col gap-4"
+    >
+      <div class="flex flex-col gap-1">
+        <label for="nameSession">Nome da sessão</label>
+        <input
+          type="text"
+          class="input"
+          id="nameSession"
+          placeholder="Digite o nome da sessão"
+          formControlName="nameSession"
+        />
+      </div>
+
+      <div class="flex flex-col gap-1">
+        <label for="userName">Seu nome</label>
+        <input
+          type="text"
+          class="input"
+          id="userName"
+          placeholder="Digite seu nome"
+          formControlName="userName"
+          required="true"
+        />
+      </div>
+      <div class="card-actions justify-end">
+        <button
+          [disabled]="!isValidForm()"
+          (click)="createSession()"
+          class="btn btn-soft btn-primary"
+        >
+          Criar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

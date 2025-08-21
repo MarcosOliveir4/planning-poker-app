@@ -56,12 +56,12 @@ describe('ThemeService', () => {
     });
 
     it('should initialize with the theme from localStorage when it exists', () => {
-      localStorageGetSpy.mockReturnValue('business');
+      localStorageGetSpy.mockReturnValue('sunset');
 
       service = TestBed.inject(ThemeService);
 
       expect(localStorageGetSpy).toHaveBeenCalledWith('theme');
-      expect(service.currentTheme()).toBe('business');
+      expect(service.currentTheme()).toBe('sunset');
     });
   });
 
@@ -73,42 +73,42 @@ describe('ThemeService', () => {
 
     it('should set the theme when setTheme() is called', async () => {
       service = TestBed.inject(ThemeService);
-      service.setTheme('business');
+      service.setTheme('sunset');
       appRef.tick();
 
-      expect(service.currentTheme()).toBe('business');
+      expect(service.currentTheme()).toBe('sunset');
       expect(mockRenderer.setAttribute).toHaveBeenCalledWith(
         document.documentElement,
         'data-theme',
-        'business',
+        'sunset',
       );
-      expect(localStorageSetSpy).toHaveBeenCalledWith('theme', 'business');
+      expect(localStorageSetSpy).toHaveBeenCalledWith('theme', 'sunset');
     });
 
-    it('should toggle theme from "light" to "business" when toggleTheme() is called', async () => {
+    it('should toggle theme from "light" to "sunset" when toggleTheme() is called', async () => {
       service = TestBed.inject(ThemeService);
       expect(service.currentTheme()).toBe('light');
 
       service.toggleTheme();
       appRef.tick();
 
-      expect(service.currentTheme()).toBe('business');
+      expect(service.currentTheme()).toBe('sunset');
       expect(mockRenderer.setAttribute).toHaveBeenCalledWith(
         document.documentElement,
         'data-theme',
-        'business',
+        'sunset',
       );
-      expect(localStorageSetSpy).toHaveBeenCalledWith('theme', 'business');
+      expect(localStorageSetSpy).toHaveBeenCalledWith('theme', 'sunset');
     });
 
-    it('should toggle theme from "business" to "light" when toggleTheme() is called', async () => {
+    it('should toggle theme from "sunset" to "light" when toggleTheme() is called', async () => {
       service = TestBed.inject(ThemeService);
-      service.setTheme('business');
+      service.setTheme('sunset');
       appRef.tick();
 
       jest.clearAllMocks();
 
-      expect(service.currentTheme()).toBe('business');
+      expect(service.currentTheme()).toBe('sunset');
 
       service.toggleTheme();
       appRef.tick();
@@ -130,11 +130,11 @@ describe('ThemeService', () => {
 
       const fakeEvent = new StorageEvent('storage', {
         key: 'theme',
-        newValue: 'business',
+        newValue: 'sunset',
       });
       storageEventHandler(fakeEvent);
 
-      expect(service.currentTheme()).toBe('business');
+      expect(service.currentTheme()).toBe('sunset');
     });
 
     it('should NOT update theme if the storage event key is not "theme"', () => {
